@@ -1,0 +1,62 @@
+<h1 id="tableLabel">Hacker Newscast</h1>
+
+<p>This component is fetching data from Hacker News Source.</p>
+
+<p *ngIf="!hackernews"><em>Loading...</em></p>
+
+<p>
+  Total Number of Hacker News Articles {{ hackernewsitemcount }}
+
+</p>
+
+<input placeholder="" #textInput class="form-control" type="text" (input)="textInput.value.length > 5 && searchForArticles(textInput.value)">
+
+<!--<form #p="ngForm" (ngSubmit)="searchForArticles(u)">
+  <div class="input-group mb-3">
+    <input (keyup)="searchForArticles($event)" stype="text" class="form-control"
+           placeholder="Suche nach Nachnamen ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Suche</button>
+    </div>
+  </div>
+</form>-->
+
+<button (click)="searchForArticles(textInput.value)">Search For Articles With</button>
+
+<div class="container">
+  <h2>Select Number Of Rows</h2>
+  <!--<div class="form-group">-->
+  <!-- Show Numbers Of Rows -->
+  <!--<select class="form-control" name="state" id="maxRows">
+      <option value="5000">Show ALL Rows</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="70">70</option>
+      <option value="100">100</option>
+    </select>
+    <input ng-model="hackerarticleid">
+  </div>-->
+  <button (click)="get50Article()">50</button>
+  <button (click)="get100Article()">100</button>
+  <button (click)="get150Article()">150</button>
+  <button (click)="get200Article()">200</button>
+</div>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="hackernews">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let articles of hackernewsdisplay; let i = index">
+      <td>{{ hackernewsdisplay[i].articleID }}</td>
+      <td>{{ hackernewsdisplay[i].articleTitle }}</td>
+      <td><a href="{{hackernewsdisplay[i].articleUrl}}" class="head-link">{{ hackernewsdisplay[i].articleUrl }}</a></td>
+    </tr>
+  </tbody>
+</table>
