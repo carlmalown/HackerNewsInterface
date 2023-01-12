@@ -19,8 +19,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="HackerTestCases\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="HackerTestCases\**" />
+    <EmbeddedResource Remove="HackerTestCases\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="HackerTestCases\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 

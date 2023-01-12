@@ -39,10 +39,12 @@
     </select>
     <input ng-model="hackerarticleid">
   </div>-->
+  <button (click)="prevPage()">Previous Page</button>
   <button (click)="get50Article()">50</button>
   <button (click)="get100Article()">100</button>
   <button (click)="get150Article()">150</button>
   <button (click)="get200Article()">200</button>
+  <button (click)="nextPage()">Next Page</button>
 </div>
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="hackernews">
   <thead>
@@ -53,10 +55,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let articles of hackernewsdisplay; let i = index">
-      <td>{{ hackernewsdisplay[i].articleID }}</td>
-      <td>{{ hackernewsdisplay[i].articleTitle }}</td>
-      <td><a href="{{hackernewsdisplay[i].articleUrl}}" class="head-link">{{ hackernewsdisplay[i].articleUrl }}</a></td>
+    <tr *ngFor="let articles of hackernewsdisplay;">
+      <td>{{ articles.articleID }}</td>
+      <td>{{ articles.articleTitle }}</td>
+      <td><a href="{{articles.articleUrl}}" class="head-link">{{ articles.articleUrl }}</a></td>
     </tr>
   </tbody>
 </table>

@@ -14,7 +14,7 @@ export class AppComponent {
     }, error => console.error(error));
     console.log("Grab max count down");
 
-    http.get<number>(baseUrl + 'hackernews/GrabRecentArticles/300').subscribe(
+    http.get<number>(baseUrl + 'hackernews/GrabRecentArticles/3000').subscribe(
       result => {
         console.log(result);
       }, error => console.error(error));
